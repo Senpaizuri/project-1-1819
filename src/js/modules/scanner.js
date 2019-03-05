@@ -23,7 +23,7 @@ const
     detect = ()=>{
         Quagga.onDetected((data)=>{
             let
-                code = data.codeResult.code.split("978")[1]
+                code = data.codeResult.code
             finder.classList.remove("active")
             document.querySelector('#code').innerHTML = `code: ${code}`
             Quagga.stop()
