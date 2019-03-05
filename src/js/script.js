@@ -1,13 +1,13 @@
 (()=>{
     const
         app = {
-            init:async()=>{
+            init:()=>{
                 if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
                     Quagga.init({
                         inputStream : {
                             name : "Live",
                             type : "LiveStream",
-                            target: document.querySelector('#finder')    // Or '#yourElement' (optional)
+                            target: document.querySelector('#finder')
                           },
                           decoder : {
                             readers : ["ean_reader"]
@@ -21,45 +21,26 @@
                             Quagga.start();
                     })
                 }
-                data.get(`https://api.cdr.nl/engine/version`)
-
-                let xhr = new XMLHttpRequest()
-                xhr.onload = (e)=>{
-                    console.log(e.responseText)
-                }
-                xhr.open("GET","https://api.cdr.nl/engine/version")
-                xhr.setRequestHeader("Authorization","Basic ODgwNjk0NjktNGRmYy00NWY0LWIwNTMtYzhiMjAxODlhZDk1OldCTFJRM1cx")
-                xhr.send()
-
             }
         },
-        data = {
-            get:(url)=>{
-                console.log(url)
-                return new Promise(resolve => {
-                    let a = new Headers({
-                        "Authorization":"Basic ODgwNjk0NjktNGRmYy00NWY0LWIwNTMtYzhiMjAxODlhZDk1OldCTFJRM1cx"
-                    })
-                    
-                    fetch(url,{
-                        method:"get",
-                        headers: a,
-                        credentials:"same-origin"
-                        
-                    })
+        handleData = {
+            get:(endpoint,id)=>{
+                return new Promise(resolve=>{
+                    let url = `./src/${endpoint}/${id}.xml`
+                    fetch(url)
+                    .then(res => console.log(res))
+                    .catch(err => ()=>{console.log(err)})
                 })
             }
         }
+
     app.init()
 
-    document.querySelector("[data-stop]").addEventListener("click",()=>{
-        Quagga.stop()
-    })
-    document.querySelector("[data-start]").addEventListener("click",()=>{
-        app.init()
-    })
-
     Quagga.onDetected((data)=>{
-        document.querySelector('#code').innerHTML = `code: ${data.codeResult.code}`
+        let code = data.codeResult.code.split("978")[1]
+        document.querySelector('#code').innerHTML = `code: ${code}`
+        console.log(code)
+        handleData.get('db',code)
+        Quagga.stop()
     })
 })()
