@@ -20,8 +20,8 @@ const
             })
         }
     },
-    detect = async()=>{
-        let id = await Quagga.onDetected((data)=>{
+    detect = ()=>{
+        Quagga.onDetected((data)=>{
             let
                 code = data.codeResult.code.split("978")[1]
             finder.classList.remove("active")
@@ -49,4 +49,4 @@ const
 
 
 
-export {init}
+export {init,detect}

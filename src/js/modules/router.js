@@ -18,15 +18,13 @@ const init = ()=>{
                 console.log("nothing to see here")
                 // console.log(await data.get("../src/db/db.json"))
                 scanner.init()
-                let id = await scanner.detect()
-                console.log(id)
+                scanner.detect()
             }
         }
     })
 }
 
 export {init}
-
 // let arr = [],
 //     items = document.querySelectorAll(".cat-track-title a")
 // items.forEach(el => arr.push(el.innerHTML))
