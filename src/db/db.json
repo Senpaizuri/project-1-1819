@@ -33,5 +33,34 @@
                 "Take u there [Missy Elliott remix]"
             ]
         }
+    },
+    {
+        "catalogusnr":"JK173067",
+        "ppn":"",
+        "catalogusImg-s":"https://media.cdr.nl/COVER/SMALL/FRONT/JK173067.jpg",
+        "catalogusImg-m":"https://media.cdr.nl/COVER/MEDIUM/FRONT/JK173067.jpg",
+        "artists":["Skrillex"],
+        "genre":["pop","dance","dupstep"],
+        "title":"Bangarang",
+        "preview":{
+            "url":[
+                "https://www.muziekweb.nl/Embed/JK173067-0001/?theme=anim",
+                "https://www.muziekweb.nl/Embed/JK173067-0002/?theme=anim",
+                "https://www.muziekweb.nl/Embed/JK173067-0003/?theme=anim",
+                "https://www.muziekweb.nl/Embed/JK173067-0004/?theme=anim",
+                "https://www.muziekweb.nl/Embed/JK173067-0005/?theme=anim",
+                "https://www.muziekweb.nl/Embed/JK173067-0006/?theme=anim",
+                "https://www.muziekweb.nl/Embed/JK173067-0007/?theme=anim",
+            ],
+            "titles":[ 
+                "Right in", 
+                "Bangarang", 
+                "Breakn' a sweat", 
+                "The devil's den", 
+                "Right on time", 
+                "Kyoto", 
+                "Summit"
+            ]
+        }
     }
 ]
