@@ -4,11 +4,14 @@ import * as render from "../modules/render.js"
 const init = ()=>{
     routie({
         "album-*":async(id)=>{
-            console.log(id)
-            if(id == ""){
-                window.location.hash = ""
+            if(!isNaN(id)){
+                let
+                    dataSet = await data.get("./src/db/db.json"),
+                    dataQuery = data.matching(dataSet,id)[0]
+                render.wiki(await data.getWiki(dataQuery.title))
+                render.wiki(await data.getWiki(dataQuery.artists[0]))
             }else{
-                render.wiki(await data.getWiki("skrillex"))
+                window.location.hash = ""
             }
         },
         "*":async(str)=>{

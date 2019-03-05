@@ -2,8 +2,8 @@
     {
         "catalogusnr":"JK198072",
         "ppn":"393572897",
-        "catalogusImg-s":"https://media.cdr.nl/COVER/SMALL/FRONT/JK198072.jpg",
-        "catalogusImg-m":"https://media.cdr.nl/COVER/MEDIUM/FRONT/JK198072.jpg",
+        "catalogusImg_s":"https://media.cdr.nl/COVER/SMALL/FRONT/JK198072.jpg",
+        "catalogusImg_m":"https://media.cdr.nl/COVER/MEDIUM/FRONT/JK198072.jpg",
         "artists":["Skrillex","Diplo"],
         "genre":["pop","dance","dupstep"],
         "title":"Skrillex and Diplo present Jack Ü",
@@ -50,7 +50,7 @@
                 "https://www.muziekweb.nl/Embed/JK173067-0004/?theme=anim",
                 "https://www.muziekweb.nl/Embed/JK173067-0005/?theme=anim",
                 "https://www.muziekweb.nl/Embed/JK173067-0006/?theme=anim",
-                "https://www.muziekweb.nl/Embed/JK173067-0007/?theme=anim",
+                "https://www.muziekweb.nl/Embed/JK173067-0007/?theme=anim"
             ],
             "titles":[ 
                 "Right in", 
