@@ -9,11 +9,18 @@
 </head>
 <body>
     <main>
-        <div id="finder"></div>
-        <span id="code"></span>
-        <button data-start>start</button>
-        <button data-stop>stop</button>
+        <section id="welcome">
+            <header>
+                <h1>OBA</h1>
+                <h2>MusicFinder</h2>
+            </header>
+            <div id="finder" class="active"></div>
+            <button data-start>Scan Code</button>
+            <button data-stop>stop</button>
+            <span id="code"></span>
+        </section>
     </main>
+    <script src="./src/js/dist/routie.js"></script>
     <script src="./src/js/dist/quagga.min.js"></script>
     <script src="./src/js/script.js" type="module"></script>
 </body>
