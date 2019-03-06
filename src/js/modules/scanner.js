@@ -5,7 +5,7 @@ const
                 inputStream : {
                     name : "Live",
                     type : "LiveStream",
-                    target: document.querySelector('#finder')
+                    target: finder
                   },
                   decoder : {
                     readers : ["ean_reader"]
@@ -19,6 +19,7 @@ const
                     Quagga.start();
             })
         }
+        detect()
     },
     detect = ()=>{
         Quagga.onDetected((data)=>{
@@ -27,7 +28,7 @@ const
             finder.classList.remove("active")
             document.querySelector('#code').innerHTML = `code: ${code}`
             Quagga.stop()
-            return code
+            window.location.hash = "album-" + code
         })
     }
 
