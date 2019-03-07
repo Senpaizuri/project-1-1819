@@ -56,8 +56,8 @@ iframe{
 #finder video{
     max-width: 19rem;
     display: block;
-    margin: auto;
     border-radius: 5px;
+    margin: .5rem 0;
     display: none;
 }
 
