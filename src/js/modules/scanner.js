@@ -46,10 +46,6 @@ const
         finder.classList.add("active")
         init()
     })
-    document.querySelector("[data-stop]").addEventListener("click",()=>{
-        finder.classList.remove("active")
-        Quagga.stop()
-    })
 })()
 
 

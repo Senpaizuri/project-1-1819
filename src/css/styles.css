@@ -108,6 +108,14 @@ section{
     height: 3rem;
 }
 
+[data-start]{
+    display: block;
+    padding: .5rem .75rem;
+    margin: auto;
+    font-size: 1rem;
+    background: transparent;
+}
+
 /* 
     Album
 */
