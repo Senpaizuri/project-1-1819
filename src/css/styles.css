@@ -115,7 +115,7 @@ section{
 #album header{
     width: 50vw;
     max-width: 40rem;
-    min-width: 25rem;
+    min-width: 20rem;
     margin: auto;
     padding: 1rem;
     text-align: center;
@@ -232,7 +232,7 @@ section{
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    justify-content: end;
+    justify-content: flex-end;
     background: var(--mainWhite);
     border: 1px solid var(--mainWhite);
 }
