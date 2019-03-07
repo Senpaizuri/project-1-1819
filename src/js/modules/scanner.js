@@ -6,9 +6,15 @@ const
                     name : "Live",
                     type : "LiveStream",
                     target: finder
+                  },constraints: {
+                    width: 480,
+                    height: 480
                   },
                   decoder : {
                     readers : ["ean_reader"]
+                  },
+                  debug:{
+                      drawScanline:true
                   }
                 }, function(err) {
                     if (err) {
@@ -26,7 +32,6 @@ const
             let
                 code = data.codeResult.code
             finder.classList.remove("active")
-            document.querySelector('#code').innerHTML = `code: ${code}`
             Quagga.stop()
             window.location.hash = "album-" + code
         })

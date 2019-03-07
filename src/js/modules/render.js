@@ -35,18 +35,19 @@ const
             newSub = document.createElement("h2"),
             newUl  = document.createElement("ul"),
             newGen = document.createElement("div"),
-            genres = data.genre.map(el => `<span>${el}</span>`)
+            metaCont = document.createElement("div"),
+            genres = data.genre.map(el => `<span class="genre ${el}">${el}</span>`)
                 
         container.innerHTML = ""
-
+    
         newImg.src = data.catalogusImg_m
 
         newTtl.innerHTML = data.title
         newSub.innerHTML = data.artists.join(",")
 
-        newGen.innerHTML = genres.join()
+        newGen.innerHTML = genres.join("")
 
-
+        metaCont.classList.add("meta")
 
         songs.forEach((song,i)=>{
             let
@@ -54,36 +55,62 @@ const
                 newSpn= document.createElement("span"),
                 newh2 = document.createElement("h2"),
                 newAn = document.createElement("a"),
-                newIfr = document.createElement("iframe")
+                newIfr = document.createElement("iframe"),
+                ifrCont= document.createElement("div"),
+                counter = document.createElement("div")
+
+            newLi.style.setProperty("animation-delay",`${i*100}ms`)
 
             newIfr.src = data.preview.url[i]
 
-            newh2.innerHTML = data.preview.titles[i]
+            ifrCont.classList.add("iframecont")
 
-            String.prototype.replaceAll = function(search, replacement) {
-                var target = this;
-                return target.replace(new RegExp(search, 'g'), replacement);
-            };
+            newh2.innerHTML = data.preview.titles[i]
+            newh2.title = data.preview.titles[i]
+
+            counter.innerHTML = (()=>{
+                if(i+1 < 10){
+                    return `#00${i+1}`
+                } else{
+                    return `#0${i+1}`
+                }
+            })()
 
             newAn.href = `https://www.musixmatch.com/lyrics/${data.artists[0].replaceAll(" ","-")}/${data.preview.titles[i].replaceAll(" ","-")}`
-            
+            newAn.classList.add("title")
+
             newSpn.innerHTML = song.lyrics_body.split("*******")[0]
             if(song.lyrics_body.split("*******")[1]){
                 newSpn.innerHTML += "<br>" + song.lyrics_body.split("*******")[1]
             }
+
+            if(song.lyrics_body.length >= 16){
+                let
+                    newAn = document.createElement("a")
+                newAn.href = `https://www.musixmatch.com/lyrics/${data.artists[0].replaceAll(" ","-")}/${data.preview.titles[i].replaceAll(" ","-")}`
+                newAn.classList.add("lyric")
+                newAn.innerHTML = "Full Lyrics"
+
+                newLi.appendChild(newAn)
+            }
             
             newAn.appendChild(newh2)
+            ifrCont.appendChild(counter)
+            ifrCont.appendChild(newIfr)
+            newLi.appendChild(ifrCont)
             newLi.appendChild(newAn)
-            newLi.appendChild(newIfr)
             newLi.appendChild(newSpn)
             newUl.appendChild(newLi)
         })
 
+        metaCont.appendChild(newGen)
+        metaCont.appendChild(newTtl)
+        metaCont.appendChild(newSub)
+
         newhead.appendChild(newImg)
-        newhead.appendChild(newTtl)
-        newhead.appendChild(newSub)
-        newhead.appendChild(newGen)
-        
+        newhead.appendChild(metaCont)
+       
+
         container.appendChild(newhead)        
         container.appendChild(newUl)
     }
