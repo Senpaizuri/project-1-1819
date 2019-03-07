@@ -14,45 +14,260 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+:root{
+    --mainRed: #f14a2d;
+    --mainWhite: #f1f1f1;
+    --mainGrey: #424242;
+    --mainOrange: #fbb03b;
+
+    --mainGradient: -webkit-linear-gradient(-45deg, var(--mainRed) 50%, var(--mainOrange));
+
+
+    --bodySize: calc(1rem + (1.75 - 1) * ((100vw - 300px) / (1600 - 300)));
+    --maxWidth: calc(20rem + (60 - 20) * ((100vw - 300px) / (1600 - 300)));
+
+    --shadowClr: rgba(0,0,0,.15);
+    --mainShadow: 0 0 20px 0;
+    --txtshadow: 1px 1px 5px;
+
+}
+
 iframe{
-    max-height: 2rem;
+    max-height: 3.75rem;
     max-width: 25rem;
 }
 
-#finder{
-    width: 300px;
-    overflow: hidden;
-    height: 0;
-    max-height: 225px;
-    background: #424242;
-    pointer-events: none;
-    margin: auto;
-    transition: .3s ease all;
-    opacity: 0;
+#finder canvas,
+#finder [clear="all"]{
+    display: none;
+    visibility: hidden;
 }
 
-#finder.active{
-    height: 225px;
-    opacity: 1;
+#finder{
+    width: var(--maxWidth);
+    padding: 1rem;
+    background: var(--mainWhite);
+    margin: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: 5px;
 }
 
 #finder video{
-    max-width: 300px;
+    max-width: 19rem;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+    display: none;
 }
 
-button{
-    padding: .33rem .75rem;
+#finder.active video{
+    display: block;
+}
+
+body{
+    background: var(--mainGradient);
+    min-height: 100vh;
+    font-size: var(--bodySize);
+    animation: wave 30s ease infinite;
+    background-size: 400%;
+    
+}
+
+@keyframes wave {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 section{
     padding: 2rem;
 }
 
+/* 
+    Header
+*/
+
 #welcome{
-    text-align: center;
-    padding: 3rem 2rem;
+    padding-top: 6rem;
 }
 
-#wiki{
+#welcome header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    align-items: flex-end;
+    color: var(--mainWhite);
+}
+
+.logo{
+    height: 3rem;
+}
+
+/* 
+    Album
+*/
+
+#album header{
+    width: 50vw;
+    max-width: 40rem;
+    min-width: 25rem;
+    margin: auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+#album header img{
+    box-shadow: var(--mainShadow) var(--shadowClr);
+}
+
+#album header .meta{
+    color: var(--mainWhite);
+    padding: 2rem 0;
+    line-height: 2.1rem;
+}
+
+#album header .meta:after{
+    content: "";
+    display: block;
+    position: absolute;
+    border-bottom: 1px solid var(--mainWhite);
+    width: 3rem;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#album header .meta h1,
+#album header .meta h2{
+    text-shadow: var(--txtShadow) var(--shadowClr);
+}
+
+#album header .meta div{
+    top: -3rem;
+    height: 0;
+}
+
+#album header .meta .genre{
+    border: 1px solid var(--mainWhite);
+    background: var(--mainWhite);
+    padding: .5rem .75rem;
+    margin: 0 .25rem;
+    border-radius: 5px;
+    box-shadow: var(--mainShadow) var(--shadowClr);
+    color: var(--mainRed);
+    transition: .3s ease all;
+}
+#album header .meta .genre:hover{
+    color: var(--mainWhite);
+    background: var(--mainRed);
+}
+
+#album ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#album ul li{
+    height: 12rem;
+    width: 18rem;
+    overflow: hidden;
+    margin: .5rem;
+    border: 1px solid var(--mainWhite);
+    animation: drop-in .3s ease forwards;
+    opacity: 0;
+    transition: .3s ease all;
+    box-shadow: var(--mainShadow) var(--shadowClr);
+}
+
+#album ul li a.title{
+    position: absolute;
+    left: 5rem;
+    top: 1rem;
+}
+
+#album ul li a.lyric{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--mainWhite);
+    padding: .5rem .75rem;
+    border-radius: 5px;
+    color: var(--mainRed);
+    transition: .3s ease all;
+    border: 1px solid var(--mainWhite);
+}
+
+#album ul li a.lyric:hover{
+    background: transparent;
+    color: var(--mainWhite);
+}
+
+#album ul li h2{
+    color: var(--mainWhite);
+    width: 12rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: .3s ease all;
+}
+
+#album ul li a.title:after{
+    content:"";
+    display: block;
+    border-bottom: 1px solid var(--mainWhite);
+    width: 3rem;
+    bottom: -.5rem;
+}
+
+#album ul li .iframecont{
+    max-width: calc(3.75rem + 2px);
+    overflow: hidden;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: end;
+    background: var(--mainWhite);
+    border: 1px solid var(--mainWhite);
+}
+
+#album ul li .iframecont div{
+    color: var(--mainRed);
+    position: absolute;
+    left: 50%;
+    bottom: 6.5rem;
+    transform: rotate(-90deg) translateY(-2.5rem);
+    letter-spacing: 0.25rem;
+    width: 5rem;
+    font-size: 1.25rem;
+}
+
+#album li > span {
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    height: 2rem;
+    overflow: hidden;
+    width: 11rem;
+color: var(--mainWhite);
+}
+@keyframes drop-in{
+    0%{
+        opacity: 0;
+        transform: translateY(-1.5rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+[class*="wiki-"]{
+    display: none;
 }
