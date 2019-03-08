@@ -311,8 +311,11 @@ color: var(--mainWhite);
     z-index: 99;
 }
 
-#sidemenu:checked + #wiki label,
 #wiki label.hidden{
+    right: 100vw;
+}
+
+#sidemenu:checked + #wiki label{
     border-radius: 0 5px 5px 0;
     right: calc(100vw - 3.5rem);
     box-shadow: var(--mainShadow) var(--shadowClr);
