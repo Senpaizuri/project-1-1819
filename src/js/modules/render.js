@@ -4,7 +4,7 @@ const
             results = data.query.search,
             resultCont = document.createElement("ul"),
             container = document.querySelector(`.${cont}`)
-        container.innerHTML = ""
+        container.innerHTML = `<h1>Wiki's for the relevant ${cont.split("wiki-")[1]}</h1>`
         results.forEach(result => {
             const
                 newH1 = document.createElement("h1"),
@@ -24,6 +24,7 @@ const
             resultCont.appendChild(newLi)
         })
         container.appendChild(resultCont)
+        document.querySelector("label").classList.remove("hidden")
     },
     album = (data,songs)=>{
         console.log(data,songs)

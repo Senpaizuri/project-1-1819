@@ -32,14 +32,13 @@ const
             let
                 code = data.codeResult.code
             finder.classList.remove("active")
+            console.log("code found", data.codeResult.code)
             Quagga.stop()
             window.location.hash = "album-" + code
         })
     }
 
 (()=>{
-    console.log("Quagga ready")
-
     let finder = document.querySelector("#finder")
 
     document.querySelector("[data-start]").addEventListener("click",()=>{
