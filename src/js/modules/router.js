@@ -8,7 +8,8 @@ const init = ()=>{
                 let
                     dataSet = await data.get("./src/db/db.json"),
                     dataQuery = data.matching(dataSet,id)[0]
-                    
+                
+                document.body.classList.add("loading")
                 render.album(dataQuery,await data.lyrics(dataQuery))
                 render.wiki(await data.getWiki(dataQuery.title),"wiki-album")
                 render.wiki(await data.getWiki(dataQuery.artists[0]),"wiki-artist")

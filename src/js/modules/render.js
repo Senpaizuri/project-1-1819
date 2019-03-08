@@ -27,7 +27,7 @@ const
         document.querySelector("label").classList.remove("hidden")
     },
     album = (data,songs)=>{
-        console.log(data,songs)
+        document.body.classList.remove("loading")
         const
             container = document.querySelector("#album"),
             newhead= document.createElement("header"),
